@@ -12,3 +12,8 @@ Study Spring Repository
 cd build/libs
 java -jar [Created jar file]
 ```
+### Remove Build Folder
+
+```
+./gradlew clean
+```
