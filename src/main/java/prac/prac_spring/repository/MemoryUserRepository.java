@@ -36,4 +36,8 @@ public class MemoryUserRepository implements UserRepository {
     return new ArrayList<>(store.values());
   }
 
+  // Method for clear store
+  public void clearStore() {
+    store.clear();
+  }
 }

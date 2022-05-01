@@ -9,8 +9,18 @@ import org.junit.jupiter.api.Test;
 import prac.prac_spring.domain.User;
 
 class MemoryUserRepositoryTest {
-
   MemoryUserRepository memoryUserRepository = new MemoryUserRepository();
+
+  /**
+   * 모든 Test는 순서가 보장되지 않는다.
+   *
+   * 그렇기 때문에 정확한 Test를 위해서 하나의 Test가 끝난 후
+   * repository를 깔끔하게 정리하는 메소드가 필요하다.
+   */
+  @AfterEach
+  public void afterEach() {
+    memoryUserRepository.clearStore();
+  }
 
   @Test
   public void save() {
