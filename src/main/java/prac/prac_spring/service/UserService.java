@@ -7,7 +7,15 @@ import prac.prac_spring.repository.MemoryUserRepository;
 import prac.prac_spring.repository.UserRepository;
 
 public class UserService {
-  private final UserRepository users = new MemoryUserRepository();
+
+  /**
+   * DI 가 가능하도록 코드를 변경
+   */
+  private final UserRepository users;
+
+  public UserService(UserRepository users) {
+    this.users = users;
+  }
 
   /**
    * Sign Up
@@ -28,10 +36,7 @@ public class UserService {
 
   private void checkUserExists(User user) {
     Optional<User> exists = users.findByName(user.getName());
-//      if (exists == null) {
-//        throw new IllegalStateException("이미 존재하는 회원입니다.");
-//      }
-    
+
     exists.ifPresent(item -> {
       throw new IllegalStateException("이미 존재하는 회원입니다.");
     });
