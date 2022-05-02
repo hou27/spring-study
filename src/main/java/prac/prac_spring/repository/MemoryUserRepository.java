@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.springframework.stereotype.Repository;
 import prac.prac_spring.domain.User;
 
+@Repository // spring 이 동작할 때 spring container 에 등록한다.
 public class MemoryUserRepository implements UserRepository {
   private static Map<Long, User> store = new HashMap<>();
   private static long sequence = 0L;
