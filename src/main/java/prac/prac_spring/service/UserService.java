@@ -16,11 +16,10 @@ public class UserService {
     try {
       // Check User exists
       checkUserExists(user);
-
       // Save user
-      users.save(user);
+      User savedUser = users.save(user);
 
-      return user.getId();
+      return savedUser.getId();
     } catch (Error e) {
       System.out.println(e);
       throw new IllegalStateException("회원 생성 중 오류가 발생했습니다.");
@@ -28,10 +27,11 @@ public class UserService {
   }
 
   private void checkUserExists(User user) {
-    Optional<User> exists = users.findById(user.getId());
+    Optional<User> exists = users.findByName(user.getName());
 //      if (exists == null) {
 //        throw new IllegalStateException("이미 존재하는 회원입니다.");
 //      }
+    
     exists.ifPresent(item -> {
       throw new IllegalStateException("이미 존재하는 회원입니다.");
     });
