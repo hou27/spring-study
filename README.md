@@ -40,7 +40,6 @@ package 의 하위 package 들을 대상으로 살핀다.
 ## 2. JAVA code로 직접 Spring Bean 등록
 service와 repository의 @Service, @Repository, @Autowired annotation을 제거  
 
-main Application과 같은 경로에
 config 파일을 생성하여
 ```
 prac/prac_spring/SpringConfig.java
