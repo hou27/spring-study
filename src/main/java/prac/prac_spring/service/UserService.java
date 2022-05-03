@@ -8,7 +8,7 @@ import prac.prac_spring.domain.User;
 import prac.prac_spring.repository.MemoryUserRepository;
 import prac.prac_spring.repository.UserRepository;
 
-@Service // spring 이 동작할 때 spring container 에 등록한다.
+//@Service // spring 이 동작할 때 spring container 에 등록한다.
 public class UserService {
 
   /**
@@ -16,7 +16,7 @@ public class UserService {
    */
   private final UserRepository users;
 
-  @Autowired // spring 이 동작할 때 이 service 를 등록하면서 spring container 에 있는 UserRepository 를 주입
+//  @Autowired // spring 이 동작할 때 이 service 를 등록하면서 spring container 에 있는 UserRepository 를 주입
   public UserService(UserRepository users) {
     this.users = users;
   }
