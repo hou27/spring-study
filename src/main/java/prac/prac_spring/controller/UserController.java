@@ -27,7 +27,6 @@ public class UserController {
   @PostMapping("/users/signUp")
   public String createUser(SignUpFrom form) {
     User user = new User();
-    System.out.println(form.getName());
     user.setName(form.getName());
 
     userService.signUp(user);
