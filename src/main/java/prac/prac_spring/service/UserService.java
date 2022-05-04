@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import prac.prac_spring.domain.User;
 import prac.prac_spring.repository.MemoryUserRepository;
 import prac.prac_spring.repository.UserRepository;
 
+@Transactional // JPA는 모든 데이터 변경이 transaction 안에서 실행되어야 한다.
 //@Service // spring 이 동작할 때 spring container 에 등록한다.
 public class UserService {
 
@@ -29,6 +31,7 @@ public class UserService {
       // Check User exists
       checkUserExists(user);
       // Save user
+      System.out.println(user);
       User savedUser = users.save(user);
 
       return savedUser.getId();
