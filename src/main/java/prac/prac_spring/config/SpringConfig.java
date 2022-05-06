@@ -15,7 +15,6 @@ import prac.prac_spring.service.UserService;
 
 @Configuration
 public class SpringConfig {
-//  @PersistenceContext // Spring에서는 안해줘도 됨.
   private final UserRepository userRepository;
 
   /**
