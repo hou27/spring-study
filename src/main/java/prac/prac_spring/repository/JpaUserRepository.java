@@ -20,13 +20,13 @@ public class JpaUserRepository implements UserRepository{
 
   @Override
   public Optional<User> findById(Long id) {
+    // T find(Class<T> entityClass, Object primaryKey)
     User user = em.find(User.class, id);
     return Optional.ofNullable(user);
   }
 
   @Override
   public Optional<User> findByName(String name) {
-//    User user = em.find(User.class, name);
     List<User> result = em.createQuery("select u from User u where u.name = :name", User.class)
         .setParameter("name", name)
         .getResultList();
