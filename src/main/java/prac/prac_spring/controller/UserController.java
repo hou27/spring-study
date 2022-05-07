@@ -17,6 +17,7 @@ public class UserController {
   @Autowired // spring 이 연관된 객체를 찾아 주입해준다.(DI)
   public UserController(UserService userService) {
     this.userService = userService;
+    System.out.println("user service : " + userService.getClass()); // Proxy를 붙이기 위해 해당 서비스가 조작된 것을 확인 (AOP 적용)
   }
 
   @GetMapping("/users/signUp")

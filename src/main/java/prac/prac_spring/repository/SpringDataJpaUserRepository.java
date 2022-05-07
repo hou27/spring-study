@@ -22,7 +22,7 @@ public interface SpringDataJpaUserRepository extends JpaRepository<User, Long>, 
 
   /**
    * 규칙에 맞게 메소드명을 작성해주면
-   * JPQL을 아래와 같이 자동을 짜준다.
+   * JPQL을 아래와 같이 자동으로 짜준다.
    * select u from User u where u.name = ?
    *
    * 즉, interface에 이름만 지정해줘도 기능 개발이 끝나는 것이다.

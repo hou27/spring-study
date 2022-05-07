@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import prac.prac_spring.aop.TimeTraceAop;
 import prac.prac_spring.repository.JdbcTemplateUserRepository;
 import prac.prac_spring.repository.JdbcUserRepository;
 import prac.prac_spring.repository.JpaUserRepository;
@@ -31,12 +32,11 @@ public class SpringConfig {
     return new UserService(userRepository);
   }
 
-//  @Bean
-//  public UserRepository userRepository() {
-////    return new MemoryUserRepository();
-//    // 간단하게 설정 파일만 변경(다른 어떤 코드도 손대지 않음)
-////    return new JdbcUserRepository(dataSource);  // spring이 생성해준 dataSource를 주입
-////    return new JdbcTemplateUserRepository(dataSource);
-//    return new JpaUserRepository(em);
-//  }
+  /*
+  // AOP가 쓰이는 것을 알리기 위해 Spring Bean에 직접 등록하려다 현재 Component Scan 사용
+  @Bean
+  public TimeTraceAop timeTraceAop() {
+    return new TimeTraceAop();
+  }
+  */
 }
