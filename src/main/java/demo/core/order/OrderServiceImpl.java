@@ -7,8 +7,14 @@ import demo.core.user.User;
 import demo.core.user.UserRepository;
 
 public class OrderServiceImpl implements OrderService {
-  private final UserRepository userRepository = new MemoryUserRepository();
-  private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+  // interface만 의존
+  private final UserRepository userRepository;
+  private final DiscountPolicy discountPolicy;
+
+  public OrderServiceImpl(UserRepository userRepository, DiscountPolicy discountPolicy) {
+    this.userRepository = userRepository;
+    this.discountPolicy = discountPolicy;
+  }
 
   @Override
   public Order createOrder(Long userId, String productName, int productPrice) {

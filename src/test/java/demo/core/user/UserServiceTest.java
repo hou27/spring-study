@@ -1,14 +1,23 @@
 package demo.core.user;
 
+import demo.core.config.AppConfig;
+import demo.core.order.OrderService;
 import demo.core.user.Grade;
 import demo.core.user.User;
 import demo.core.user.UserService;
 import demo.core.user.UserServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class UserServiceTest {
-  UserService userService = new UserServiceImpl();
+  UserService userService;
+  @BeforeEach
+  public void beforeEach() {
+    AppConfig appConfig = new AppConfig();
+    userService = appConfig.userService();
+  }
+//  UserService userService = new UserServiceImpl();
   @Test
   void signUp() {
     // given
