@@ -5,7 +5,7 @@
 * DIP(Dependency Inversion Principle) : 의존 역전 원칙
 
 # 문제
-```aidl
+```java
 FixDiscountPolicy.java
 
 public class FixDiscountPolicy implements DiscountPolicy {
@@ -59,7 +59,7 @@ FixDiscountPolicy 인 구체 클래스도 함께 의존하고 있다.
 인터페이스(추상화된 것)에만 의존하도록 설계를 변경하여 문제를 해결하도록 하겠다.  
 
 Before
-```aidl
+```java
 public class OrderServiceImpl implements OrderService {
   ...
   private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
@@ -68,7 +68,7 @@ public class OrderServiceImpl implements OrderService {
 }
 ```
 After
-```aidl
+```java
 public class OrderServiceImpl implements OrderService {
   ...
   private DiscountPolicy discountPolicy; // interface만 의존
@@ -81,7 +81,7 @@ public class OrderServiceImpl implements OrderService {
 그래서 OrderServiceImpl에 DiscountPolicy의 구현 객체를 생성, 주입해주기 위해 설정 파일을 추가하겠다.  
 
 # Config file
-```aidl
+```java
 public class AppConfig {
   public UserService userService() {
     return new UserServiceImpl(userRepository());
@@ -101,7 +101,7 @@ public class AppConfig {
 ```
 이렇게 설정 파일에서 각각의 의존 관계를 설정해주고,  
 
-```aidl
+```java
 OrderServiceImpl.java 
 
 public class OrderServiceImpl implements OrderService {
@@ -121,7 +121,7 @@ public class OrderServiceImpl implements OrderService {
 
 ## Config 사용
 Test file에 사용된 예시를 살펴보겠다.
-```aidl
+```java
 public class OrderServiceTest {
 // 기존 코드
 //  UserService userService = new UserServiceImpl();
