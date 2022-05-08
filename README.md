@@ -41,7 +41,7 @@ package 의 하위 package 들을 대상으로 살핀다.
 service와 repository의 @Service, @Repository, @Autowired annotation을 제거  
 
 config 파일을 생성하여
-```aidl
+```java
 prac/prac_spring/SpringConfig.java
 
 @Configuration
@@ -67,7 +67,7 @@ public class SpringConfig {
 
 ### ex)
 Before
-```aidl
+```java
 prac/prac_spring/SpringConfig.java
 
 @Configuration
@@ -82,7 +82,7 @@ public class SpringConfig {
 }
 ```
 After
-```aidl
+```java
 prac/prac_spring/SpringConfig.java
 
 @Configuration

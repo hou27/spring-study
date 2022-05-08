@@ -19,7 +19,7 @@ joinPoint.proceed()를 통해 실제 로직을 실행한다.
 
 ### 간단한 확인
 UserController line:20을 보면
-```aidl
+```java
 @Autowired
 public UserController(UserService userService) {
     this.userService = userService;
@@ -29,7 +29,7 @@ public UserController(UserService userService) {
 ```
 위와 같이 출력문을 삽입해두었는데,  
 실제로 실행해보면
-```
+```shell
 user service : class prac.prac_spring.service.UserService$$EnhancerBySpringCGLIB$$f9a33d2d
 ```
 이렇게 userService를 복제해서 코드를 조작하는 기술(EnhancerBySpringCGLIB)을 사용하여  
