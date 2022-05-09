@@ -134,3 +134,62 @@ void findApplicationBean() {
  }
 }
 ```
+
+### 기본적인 조회 방법
+```java
+ac.getBean(빈이름, 타입)  
+ac.getBean(타입)  
+```
+Test를 통해 확인한 코드
+```java
+public class ApplicationContextBasicFindTest {
+
+  AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+
+  @Test
+  @DisplayName("Find by Bean name")
+  void findBeanByName() {
+    UserService userService = ac.getBean("userService", UserService.class);
+    Assertions.assertThat(userService).isInstanceOf(UserServiceImpl.class);
+  }
+
+  @Test
+  @DisplayName("Find by Bean type without name")
+  void findBeanByType() {
+    UserService userService = ac.getBean(UserService.class);
+    Assertions.assertThat(userService).isInstanceOf(UserServiceImpl.class);
+  }
+
+  @Test
+  @DisplayName("Find Bean by real type")
+  void findBeanByRealType() {
+    // 가능하긴 하지만 구현에 의존하는 것은 좋지 않다.
+    UserService userService = ac.getBean("userService", UserServiceImpl.class);
+    Assertions.assertThat(userService).isInstanceOf(UserServiceImpl.class);
+  }
+
+  @Test
+  @DisplayName("Fail to find Bean by name")
+  void findBeanByNameFail() {
+//    UserService xxblah = ac.getBean("Xxblah", UserService.class);
+    assertThrows(NoSuchBeanDefinitionException.class,
+        () -> ac.getBean("Xxblah", UserService.class));
+  }
+
+}
+```
+
+※ 조회 대상 스프링 빈이 없으면 예외 발생  
+```java
+@Test
+@DisplayName("Fail to find Bean by name")
+void findBeanByNameFail() {
+// UserService xxblah = ac.getBean("Xxblah", UserService.class);
+ assertThrows(NoSuchBeanDefinitionException.class,
+     () -> ac.getBean("Xxblah", UserService.class));
+}
+```
+```
+Err : 
+NoSuchBeanDefinitionException: No bean named 'xxxxx' available
+```
