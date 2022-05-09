@@ -145,4 +145,13 @@ public class OrderServiceTest {
 # 결론
 이렇게 객체의 생성과 연결은 Config 파일이 담당하고  
 OrderServiceImpl은 추상 interface에만 의존하게 되어 DIP를 잘 지켰으며,  
-의존 관계에 있는 것들이 변경되어도 OrderServiceImpl는 수정할 필요가 없어져 OCP 또한 잘 지키게 되었다.  
+의존 관계에 있는 것들이 변경되어도 OrderServiceImpl는 수정할 필요가 없어져 OCP 또한 잘 지키게 되었다.
+
+# SRP
+> 단일 책임 원칙  
+
+하나의 클래스는 하나의 책임, 역할만 수행해야 한다는 원칙이다.  
+
+현재 코드는 SRP를 따르면서 관심사를 분리하였는데,  
+좋은 객체 지향 설계 5원칙(SOLID) 중 SRP, DIP, OCP의 3가지를 확실히 지켰다고 말할 수 있겠다.  
+
