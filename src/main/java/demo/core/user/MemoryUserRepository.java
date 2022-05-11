@@ -2,7 +2,9 @@ package demo.core.user;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MemoryUserRepository implements UserRepository {
 
   private static Map<Long, User> store = new HashMap<>();

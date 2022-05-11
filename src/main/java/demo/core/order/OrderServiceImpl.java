@@ -5,12 +5,15 @@ import demo.core.discount.FixDiscountPolicy;
 import demo.core.user.MemoryUserRepository;
 import demo.core.user.User;
 import demo.core.user.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
-  // interface만 의존
   private final UserRepository userRepository;
   private final DiscountPolicy discountPolicy;
 
+  @Autowired
   public OrderServiceImpl(UserRepository userRepository, DiscountPolicy discountPolicy) {
     this.userRepository = userRepository;
     this.discountPolicy = discountPolicy;
@@ -22,10 +25,5 @@ public class OrderServiceImpl implements OrderService {
     int discountPrice = discountPolicy.discount(user, productPrice);
 
     return new Order(userId, productName, productPrice, discountPrice);
-  }
-
-  // Test용
-  public UserRepository getUserRepository() {
-    return userRepository;
   }
 }
