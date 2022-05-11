@@ -6,6 +6,8 @@ import demo.core.config.AppConfig;
 import demo.core.user.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class SingletonTest {
   @Test
@@ -42,6 +44,24 @@ public class SingletonTest {
     // Check singletonService1 == singletonService2
     assertThat(singletonService1).isSameAs(singletonService2);
     singletonService1.logic();
+  }
+
+  @Test
+  @DisplayName("Spring Container && Singleton")
+  void springContainer() {
+    ApplicationContext ac = new
+        AnnotationConfigApplicationContext(AppConfig.class);
+    //1. 조회: 호출할 때 마다 같은 객체를 반환
+    UserService userService1 = ac.getBean("userService",
+        UserService.class);
+    //2. 조회: 호출할 때 마다 같은 객체를 반환
+    UserService userService2 = ac.getBean("userService",
+        UserService.class);
+    //참조값이 같은 것을 확인
+    System.out.println("userService1 = " + userService1);
+    System.out.println("userService2 = " + userService2);
+    //userService1 == userService2
+    assertThat(userService1).isSameAs(userService2);
   }
 
 

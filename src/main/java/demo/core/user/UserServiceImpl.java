@@ -17,4 +17,9 @@ public class UserServiceImpl implements UserService {
   public User findUser(Long userId) {
     return userRepository.findById(userId);
   }
+
+  // Test용
+  public UserRepository getUserRepository() {
+    return userRepository;
+  }
 }
