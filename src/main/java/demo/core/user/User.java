@@ -7,9 +7,9 @@ import lombok.Setter;
 @Getter @Setter
 @RequiredArgsConstructor
 public class User {
-  private Long id;
-  private String name;
-  private Grade grade;
+  private final Long id;
+  private final String name;
+  private final Grade grade;
 
   /**
    * Lombok의
