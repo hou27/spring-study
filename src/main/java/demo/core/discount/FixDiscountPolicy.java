@@ -2,7 +2,9 @@ package demo.core.discount;
 
 import demo.core.user.Grade;
 import demo.core.user.User;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FixDiscountPolicy implements DiscountPolicy {
   private final int discountFixAmount = 1000;
 

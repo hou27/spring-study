@@ -1,5 +1,6 @@
 package demo.core.order;
 
+import demo.core.annotation.MainDiscountPolicy;
 import demo.core.discount.DiscountPolicy;
 import demo.core.discount.FixDiscountPolicy;
 import demo.core.user.MemoryUserRepository;
@@ -14,7 +15,7 @@ public class OrderServiceImpl implements OrderService {
   private final DiscountPolicy discountPolicy;
 
   @Autowired
-  public OrderServiceImpl(UserRepository userRepository, DiscountPolicy discountPolicy) {
+  public OrderServiceImpl(UserRepository userRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
     this.userRepository = userRepository;
     this.discountPolicy = discountPolicy;
   }
